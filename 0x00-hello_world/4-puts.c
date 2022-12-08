@@ -1,10 +1,12 @@
 #include <stdio.h>
 #include <string.h>
 
-int main()
+/*my first code on alx c langauge*/
+int main(void)
 {
-	char str1[] = "Programming is like building a multilingual puzzle\n";
-	puts(str1);
+	char str1[] = "\"Programming is like building a multilingual puzzle\n";
+	
+	puts (str1);
 	return(0);
 }
 
