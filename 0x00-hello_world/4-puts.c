@@ -1,10 +1,12 @@
 #include <stdio.h>
 #include <string.h>
 
-int main(void) /**
-		 *main - Entry point
-		 *Return: Always 0 (Success)
-		 */
+/**
+ *main - Entry point
+ *Return: Always 0 (Successs)
+ */
+
+int main(void)
 {
 	char str1[] = "\"Programming is like building a multilingual puzzle";
 	/**/
