@@ -12,7 +12,7 @@ int main(void)
 
 		for (tens = '0'; tens <= '9'; tens++) /*print for tens*/
 		{
-			for (ones = '0'; ones <= '9'; ones++) /*print for ones*/
+			for (ones = (tens + 1); ones <= '9'; ones++) /*print for ones*/
 			{
 				putchar(tens);
 				putchar(ones);
