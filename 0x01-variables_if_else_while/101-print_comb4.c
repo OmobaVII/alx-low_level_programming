@@ -7,8 +7,8 @@
 
 int main(void)
 {
-		int tens;
 		int ones;
+		int tens;
 		int hundreds;
 
 		for (hundreds = '0'; tens <= '9'; hundreds++) /*print for tens*/
