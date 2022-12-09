@@ -7,20 +7,20 @@
 
 int main(void)
 {
-		int ones;
-		int tens;
-		int hundreds;
+		int one;
+		int ten;
+		int hundred;
 
-		for (hundreds = '0'; tens <= '9'; hundreds++) /*print for tens*/
+		for (hundred = '0'; hundred <= '9'; hundred++) /*print for tens*/
 		{
-			for (tens = (hundreds + 1); tens <= '9'; tens++) /*print for ones*/
+			for (ten = (hundred + 1); ten <= '9'; ten++) /*print for ones*/
 			{
-				for (ones = (tens + 1); ones <= '9'; ones++)
+				for (one = (ten + 1); one <= '9'; one++)
 				{
-				putchar(hundreds);
-				putchar(tens);
-				putchar(ones);
-					if (hundreds != '7' || tens != '8' || ones != '9')
+				putchar(hundred);
+				putchar(ten);
+				putchar(one);
+					if (hundred != '7' || ten != '8' || one != '9')
 					{
 						putchar(',');
 						putchar(' ');
