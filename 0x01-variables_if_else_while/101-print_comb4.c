@@ -11,16 +11,16 @@ int main(void)
 		int ones;
 		int hundreds;
 
-		for (tens = '0'; tens <= '9'; tens++) /*print for tens*/
+		for (hundreds = '0'; tens <= '9'; hundreds++) /*print for tens*/
 		{
-			for (ones = (tens + 1); ones <= '9'; ones++) /*print for ones*/
+			for (tens = (hundreds + 1); tens <= '9'; tens++) /*print for ones*/
 			{
-				for (hundreds = (ones + 1); hundreds <= '9'; hundreds++)
+				for (ones = (tens + 1); ones <= '9'; ones++)
 				{
+				putchar(hundreds);
 				putchar(tens);
 				putchar(ones);
-				putchar(hundreds);
-					if (tens != '9' || ones != '9' || hundreds != '9')
+					if (hundreds != '7' || tens != '8' || ones != '9')
 					{
 						putchar(',');
 						putchar(' ');
