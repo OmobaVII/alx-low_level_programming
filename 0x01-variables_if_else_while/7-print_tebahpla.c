@@ -1,18 +1,18 @@
 #include <stdio.h>
 
 /**
- * main - numbers
+ * main - lowercase alphabets
  * Return: Always 0 (Success)
  */
 
 int main(void)
 {
-	int n = 0;
+	char letter = 'z';
 
-	while (n < 10)
+	while (letter >= 'a')
 	{
-		printf("%i", n);
-		n++;
+		putchar(letter);
+		letter--;
 	}
 	putchar('\n');
 	return (0);
