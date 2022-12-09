@@ -16,7 +16,7 @@ int main(void)
 			{
 				putchar(tens);
 				putchar(ones);
-				if (!(tens == '9' && ones == '9'))/*for skiping comma at the end*/
+				if (tens != '8' || ones != '9'))/*for skiping comma at the end*/
 				{
 					putchar(',');
 					putchar(' ');
