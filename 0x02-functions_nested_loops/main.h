@@ -15,7 +15,11 @@ int _putchar(char c);
  * print_alphabet_print lowercase alphabets
  */
 
-void print_alphabet (void);
+void lowercase_alphabet(void);
+
+/**
+ * print_alphabet_x10 alphabets
+ */
 
 void print_alphabet_x10(void);
 
