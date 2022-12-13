@@ -7,22 +7,41 @@
 
 int main(void)
 {
-	int counter;
-	int countto = 98;
-	int a;
-	int b;
-	a = 1;
-	b = 2;
+	int counter, overflow;
+	unsigned long a = 1;
+	unsigned long b = 1;
+	unsigned long sum = 0;
+	long a_head, a_tail, b_head, b_tail, sum_head, sum_tail;
 
-	for (counter = 1; counter <= (countto / 2); counter++)
+	printf("1");
+	for (counter = 2; counter < 93; counter++)
 	{
-		printf("%d %d ", a, b);
-		a += b;
-		b += a;
+		sum = a + b;
+		a = b;
+		b = sum;
+		printf(", %lu", sum);
 	}
-	if (countto % 2 == 1)
-		printf("%d", a);
+
+	a_head = a / 1000000000;
+	a_tail = a % 1000000000;
+	b_head = b / 1000000000;
+	b_tail = b % 1000000000;
+
+	for (; counter < 99; counter++)
+	{
+		overflow = (a_tail + b_tail) / 1000000000;
+		sum_tail = (a_tail + b_tail) - (1000000000 * overflow);
+		sum_head = (a_head + b_head) + overflow;
+
+		printf(", %lu%lu", sum_head, sum_tail);
+
+		a_head = b_head;
+		a_tail = b_tail;
+		b_head = sum_head;
+		b_tail = sum_tail;
+	}
 
 	printf("\n");
+
 	return (0);
 }
