@@ -2,18 +2,19 @@
 
 /**
  * lowercase_alphabet - print lower case alphabets
- * 
  * Return: Always 0 (Success)
  */
-void lowercase_alphabet(void)
-{
-	char letter;
-	letter = 'a';
 
-	while (letter <= 'z')
+void print_alphabet(void)
+{
+	char alpha;
+
+	alpha = 'a';
+
+	while (alpha <= 'z')
 	{
-		_putchar(letter);
-		letter++;
+		_putchar(alpha);
+		alpha++;
 	}
-	_putchar('\n');
+	_putchar('\n');	
 }
