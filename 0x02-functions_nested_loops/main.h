@@ -1,14 +1,19 @@
-#ifndef _Main_h
-#define _Main_h
+#ifndef _MAIN_H_
+#define _MAIN_H_
 
 /**
- * _putchar -writes the character c to standard output
+ * _putchar - writes the character c to standard output
  * @c: The character to print
+ *
  * Return: On success 1.
- * On errot, -1 is returned, and error is set appropraitely.
+ * On error, -1 is returned, and error is set appropraitely.
  */
 
-int _putchar (char c);
+int _putchar(char c);
+
+/**
+ * print_alphabet_print lowercase alphabets
+ */
 
 void print_alphabet (void);
 
