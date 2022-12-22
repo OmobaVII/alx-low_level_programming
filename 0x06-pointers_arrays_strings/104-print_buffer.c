@@ -4,6 +4,8 @@
  * print_buffer - print a buffer only 10bytes at a time
  * @b: string to print buffer from
  * @size: size of buffer
+ * @sizes: size of buffer
+ * @ptr: pointer
  * Return: void
  */
 void print_buffer(char *b, int size)
