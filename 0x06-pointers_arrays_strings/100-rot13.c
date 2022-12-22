@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * rot13 - used to convert to rot13 
+ * rot13 - used to convert to rot13
  * @string: pointer
  * Return: string
  */
