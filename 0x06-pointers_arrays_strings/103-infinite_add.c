@@ -22,7 +22,8 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 	r[size_r] = 0;
 	s1--;
 	s2--;
-	while (s2 != n2 - 1 && s1 != n1 - 1)											{
+	while (s2 != n2 - 1 && s1 != n1 - 1)
+	{
 		r[index] = *s2 - '0' + *s1 + carry;
 		carry = 0;
 		if (r[index] > '9')
