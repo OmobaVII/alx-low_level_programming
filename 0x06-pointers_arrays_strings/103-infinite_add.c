@@ -1,86 +1,66 @@
 /**
  * infinite_add - adds two integers stored as strings
- *
  * @n1: number 1 integer to add
  * @n2: number 2 integer to add
  * @r: array to store sum
  * @size_r: size of r
+ *
  * Return: Always 0(Success)
- * return 0;
  */
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
-	int remain = 0, appex = 0, appex2;
-	char *s1 = n1, *s2 = n2;
+	int p1, p2, tmpl, rl, n, sum, number1, number2, remain;
+	char tmp[1000];
 
-	while (*s1 != 0)
-		s1++;
-	while (*s2 != 0)
-		s2++;
-	size_r--;
-	r[size_r] = 0;
-	s1--;
-	s2--;
-	while (s2 != n2 - 1 && s1 != n1 - 1)
+	rl = n = p1 = p2 = sum = number1 = number2 = remain = 0;
+	while (n1[p1] != '\0')
+		p1++;
+	while (n2[p2] != '\0')
+		p2++;
+	if (p1 + 2 > size_r || p2 + 2 > size_r)
+		return (0);
+	p1--;
+	p2--;
+	while (n <= p1 || n <= p2)
 	{
-		r[appex] = *s2 - '0' + *s1 + remain;
-		remain = 0;
-		if (r[appex] > '9')
-		{
-			remain++;
-			r[appex] -= 10;
-		}
-		appex++;
-		s2--;
-		s1--;
-		if (size_r == appex && (s1 != n1 - 1 || s2 != n2 - 1 || remain == 1))
-			return (0);
-	}
-	while (s1 != n1 - 1)
-	{
-		r[appex] = *s1 + remain;
-		remain = 0;
-		if (r[appex] > '9')
+		number1 = number2 = 0;
+		if (n <= p1)
+			number1 = n1[p1 - n] - '0';
+		if (n <= p2 && (p2 - n) >= 0)
+			number2 = n2[p2 - n] - '0';
+		sum = number1 + number2 + remain;
+		if (sum >= 10)
 		{
 			remain = 1;
-			r[appex] -= 10;
+			sum -= 10;
 		}
-		s1--;
-		appex++;
-		if (size_r == appex && (s1 != n1 - 1 || remain == 1))
-			return (0);
+		else
+			remain = 0;
+		r[n] = sum + '0';
+		n++;
+		rl++;
 	}
-	while (s2 != n2 - 1)
+	if (remain > 0)
 	{
-		r[appex] = *s2 + remain;
-		remain = 0;
-		if (r[appex] > '9')
+		r[n] = remain + '0';
+		r[n + 1] = '\0';
+	}
+	n = tmpl = 0;
+	while (n <= rl)
+	{
+		tmp[n] = r[rl - n];
+		tmpl++;
+		n++;
+	}
+	n = 0;
+	while (n < tmpl)
+	{
+		if (r[n] == '\0')
 		{
-			remain = 1;
-			r[appex] -= 10;
+			break;
 		}
-		s2--;
-		appex++;
-		if (size_r == appex && (s2 != n2 - 1 || remain == 1))
-			return (0);
-	}
-	if (remain == 1)
-	{
-		r[appex] = '1';
-		r[appex + 1] = 0;
-	}
-	else
-	{
-		r[appex--] = 0;
-	}
-	appex2 = 0;
-	while (appex2 <= appex)
-	{
-		remain = r[appex];
-		r[appex] = r[appex2];
-		r[appex2] = remain;
-		appex--;
-		appex2++;
+		r[n] = tmp[n];
+		n++;
 	}
 	return (r);
 }
