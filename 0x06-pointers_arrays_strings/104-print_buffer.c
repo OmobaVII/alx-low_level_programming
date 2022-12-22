@@ -4,13 +4,12 @@
  * print_buffer - print a buffer only 10bytes at a time
  * @b: string to print buffer from
  * @size: size of buffer
- * @sizes: size of buffer
- * @ptr: pointer
  * Return: void
  */
+
 void print_buffer(char *b, int size)
 {
-	int i, counter = 0, sizes = size;
+	int i, counter = 0, size2 = size;
 	char *ptr = b;
 
 	if (size == 0)
@@ -43,7 +42,7 @@ void print_buffer(char *b, int size)
 				printf("%c", *b);
 			else
 				printf(".");
-			sizes--;
+			size2--;
 			i++;
 			b++;
 		}
