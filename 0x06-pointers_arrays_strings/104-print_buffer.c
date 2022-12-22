@@ -38,7 +38,7 @@ void print_buffer(char *b, int size)
 		i = 0;
 		while (size2 > 0 && i < 10)
 		{
-			if (*b > 31 && *b != 127)
+			if (*b >= 32 && *b != 127)
 				printf("%c", *b);
 			else
 				printf(".");
