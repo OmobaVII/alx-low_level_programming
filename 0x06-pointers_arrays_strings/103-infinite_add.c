@@ -4,7 +4,6 @@
  * @n2: number 2 integer to add
  * @r: array to store sum
  * @size_r: size of r
- *
  * Return: Always 0(Success)
  */
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
@@ -19,6 +18,7 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 		p2++;
 	if (p1 + 2 > size_r || p2 + 2 > size_r)
 		return (0);
+
 	p1--;
 	p2--;
 	while (n <= p1 || n <= p2)
