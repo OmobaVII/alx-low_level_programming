@@ -1,66 +1,86 @@
 /**
  * infinite_add - adds two integers stored as strings
- * @n1: number 1 integer to add
- * @n2: number 2 integer to add
- * @r: array to store sum
- * @size_r: size of r
- * Return: Always 0(Success)
+ *
+ * @n1: first integer string to add
+ * @n2: second integer string to add
+ * @r: array to store resulting string in
+ * @size_r: size of array r
+ * 
+ * Return: the summed string in r. If r is too small for the result,
+ * return 0;
  */
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
-	int p1, p2, tmpl, rl, n, sum, number1, number2, remain;
-	char tmp[1000];
+	int carry = 0, index = 0, index2;
+	char *s1 = n1, *s2 = n2;
 
-	rl = n = p1 = p2 = sum = number1 = number2 = remain = 0;
-	while (n1[p1] != '\0')
-		p1++;
-	while (n2[p2] != '\0')
-		p2++;
-	if (p1 + 2 > size_r || p2 + 2 > size_r)
-		return (0);
-
-	p1--;
-	p2--;
-	while (n <= p1 || n <= p2)
-	{
-		number1 = number2 = 0;
-		if (n <= p1)
-			number1 = n1[p1 - n] - '0';
-		if (n <= p2 && (p2 - n) >= 0)
-			number2 = n2[p2 - n] - '0';
-		sum = number1 + number2 + remain;
-		if (sum >= 10)
+	while (*s1 != 0)
+		s1++;
+	while (*s2 != 0)
+		s2++;
+	size_r--;
+	r[size_r] = 0;
+	s1--;
+	s2--;
+	while (s2 != n2 - 1 && s1 != n1 - 1)											{
+		r[index] = *s2 - '0' + *s1 + carry;
+		carry = 0;
+		if (r[index] > '9')
 		{
-			remain = 1;
-			sum -= 10;
+			carry++;
+			r[index] -= 10;
 		}
-		else
-			remain = 0;
-		r[n] = sum + '0';
-		n++;
-		rl++;
+		index++;
+		s2--;
+		s1--;
+		if (size_r == index && (s1 != n1 - 1 || s2 != n2 - 1 || carry == 1))
+			return (0);
 	}
-	if (remain > 0)
+	while (s1 != n1 - 1)
 	{
-		r[n] = remain + '0';
-		r[n + 1] = '\0';
-	}
-	n = tmpl = 0;
-	while (n <= rl)
-	{
-		tmp[n] = r[rl - n];
-		tmpl++;
-		n++;
-	}
-	n = 0;
-	while (n < tmpl)
-	{
-		if (r[n] == '\0')
+		r[index] = *s1 + carry;
+		carry = 0;
+		if (r[index] > '9')
 		{
-			break;
+			carry = 1;
+			r[index] -= 10;
 		}
-		r[n] = tmp[n];
-		n++;
+		s1--;
+		index++;
+		if (size_r == index && (s1 != n1 - 1 ||  carry == 1))
+			return (0);
+	}
+	while (s2 != n2 - 1)
+	{
+		r[index] = *s2 + carry;
+		carry = 0;
+		if (r[index] > '9')
+		{
+			carry = 1;
+			r[index] -= 10;
+		}
+		s2--;
+		index++;
+		if (size_r == index && (s2 != n2 - 1 || carry == 1))
+			return (0);
+	}
+	if (carry == 1)
+	{
+		r[index] = '1';
+		r[index + 1] = 0;
+	}
+	else
+	{
+		r[index--] = 0;
+	}
+	index2 = 0;
+	while (index2 <= index)
+	{
+		carry = r[index];
+		r[index] = r[index2];
+		r[index2] = carry;
+		index--;
+		index2++;
 	}
 	return (r);
 }
