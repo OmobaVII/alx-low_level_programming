@@ -1,5 +1,3 @@
-#include "main.h"
-
 /**
  * infinite_add - adds two integers stored as strings
  *
@@ -8,8 +6,8 @@
  * @r: array to store sum
  * @size_r: size of r
  * Return: Always 0(Success)
+ * return 0;
  */
-
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
 	int remain = 0, appex = 0, appex2;
