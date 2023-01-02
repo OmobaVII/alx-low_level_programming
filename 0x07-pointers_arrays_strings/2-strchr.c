@@ -2,7 +2,7 @@
 #include "main.h"
 
 /**
- * _strchar - Function used to test for a particular character
+ * _strchr - Function used to test for a particular character
  * @s: pointer to be tested
  * @c: character to be tested for in pointer
  * Return: character tested for
