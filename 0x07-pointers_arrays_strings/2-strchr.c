@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stddef.h>
 
 /**
  * _strchar - Function used to test for a particular character
@@ -18,5 +19,6 @@ char *_strchar (char *s, char c)
 	}
 	if (c == '\0')
 		return (s);
+
 	return (NULL);
 }
