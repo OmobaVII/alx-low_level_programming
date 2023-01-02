@@ -1,4 +1,4 @@
-#include <stdlib.h>
+#include <stddef.h>
 #include "main.h"
 
 /**
@@ -8,7 +8,7 @@
  * Return: character tested for
  */
 
-char *_strchar (char *s, char c)
+char *_strchr(char *s, char c)
 {
 	while (*s)
 	{
