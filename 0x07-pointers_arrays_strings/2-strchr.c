@@ -1,5 +1,5 @@
+#include <stdlib.h>
 #include "main.h"
-#include <stddef.h>
 
 /**
  * _strchar - Function used to test for a particular character
