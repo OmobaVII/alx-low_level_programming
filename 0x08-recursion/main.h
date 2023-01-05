@@ -17,5 +17,4 @@ int palindrome(char *s, int l);
 int count(char *s);
 int wildcmp(char *s1, char *s2);
 
-
 #endif
