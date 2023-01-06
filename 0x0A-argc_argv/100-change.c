@@ -12,6 +12,7 @@ int main(int argc, char *argv[])
 {
 	int a;
 	int change;
+
 	change = 0;
 
 	if (argc != 2)
@@ -24,9 +25,9 @@ int main(int argc, char *argv[])
 		printf("0\n");
 		return (0);
 	}
-	
+
 	a = atoi(argv[1]);
-	
+
 	change = change + a / 25;
 	a = a % 25;
 	change = change + a / 10;
