@@ -36,13 +36,13 @@ int main(int argc, char *argv[])
 	if (argc == 1)
 	{
 		printf("0\n");
-		return (1);
+		return (0);
 	}
 	while (a < argc)
 	{
 
 		if (is_num(argv[a]))
-			answer += atoi(argv[a]);
+			answer = answer + atoi(argv[a]);
 		else
 		{
 			printf("Error\n");
