@@ -20,7 +20,10 @@ char *str_concat(char *s1, char *s2)
 	b = 0;
 	count1 = 0;
 	count2 = 0;
-
+	if (s1 == NULL)
+		s1 = "";
+	if (s2 == NULL)
+		s2 = "";
 	for (a = 0; s1[a] != '\0'; a++)
 	{
 		count1++;
@@ -30,10 +33,6 @@ char *str_concat(char *s1, char *s2)
 		count2++;
 	}
 	newlenght = count1 + count2;
-	if (s1 == NULL)
-		s1 = "";
-	if (s2 == NULL)
-		s2 = "";
 	s = malloc((sizeof(char) * (newlenght + 1)));
 	if (s == NULL)
 		return (NULL);
