@@ -30,13 +30,9 @@ char *str_concat(char *s1, char *s2)
 		count2++;
 	}
 	newlenght = count1 + count2;
-	s = malloc((sizeof(char) * newlenght));
+	s = malloc((sizeof(char) * (newlenght + 1)));
 	while (s1 == NULL || s2 == NULL)
 		continue;
-	if (s == NULL)
-	{
-		return (NULL);
-	}
 	a = 0;
 	while (a < count1)
 	{
