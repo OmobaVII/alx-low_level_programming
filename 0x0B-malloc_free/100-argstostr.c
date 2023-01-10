@@ -1,6 +1,12 @@
 #include "main.h"
 #include <stdlib.h>
 
+/**
+ * lenghtofstring - used to return the lenght of a string
+ * @str: the test string
+ * Return: the lenght of the string
+ */
+
 int lenghtofstring(char *str)
 {
 	int count = 0;
@@ -10,6 +16,13 @@ int lenghtofstring(char *str)
 		count++;
 	return (count);
 }
+
+/**
+ * argstostr - a function that concetenates all the arguments of the program
+ * @ac: the number of arguments
+ * @av: the arguments
+ * Return: the concetenated arguments
+ */
 
 char *argstostr(int ac, char **av)
 {
