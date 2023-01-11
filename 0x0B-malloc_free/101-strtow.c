@@ -35,21 +35,21 @@ char **strtow(char *str)
 	for (a = words_count = 0; str[a] != '\0'; a++)
 		if (str[a] != ' ' && (str[a + 1] == ' ' || str[a + 1] == '\0'))
 			words_count++;
-	words = malloc((words_count + 1) * sizeof(char *));
+	words = malloc(sizeof(char *) * (words_count + 1));
 	if (words == NULL || words_count == 0)
 	{
 		free(words);
 		return (NULL);
 	}
-	for (b = 0; b < words_count; b++)
+	for (b = s = 0; b < words_count; b++)
 	{
-		for (a = s = 0; str[c] != '\0'; a++)
+		for (a = s; str[a] != '\0'; a++)
 		{
-			if (str[c] == ' ')
+			if (str[a] == ' ')
 				s++;
-			if (str[c] != ' ' && (str[c + 1] == ' ' || str[c + 1] == '\0'))
+			if (str[a] != ' ' && (str[a + 1] == ' ' || str[a + 1] == '\0'))
 			{
-				words[b] = malloc((c - s + 2) * sizeof(char));
+				words[b] = malloc(sizeof(char) * (a - s + 2));
 				if (words[b] == NULL)
 				{
 					thefree(words, b);
