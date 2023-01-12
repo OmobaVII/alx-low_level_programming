@@ -36,7 +36,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	{
 		s2 = "";
 	}
-	s = malloc(lenghts + 1);
+	s = malloc(lenghts);
 	if (s == NULL)
 		return (NULL);
 	while (a < strlen(s1))
