@@ -38,32 +38,23 @@ void _printerror(char *s1)
 }
 
 /**
- *print_number - used to print an integer
- *@n: used as test integer
- *Return: void
+ * print_number - Prints an integer.
+ * @n: The integer to be printed.
  */
 
 void print_number(int n)
 {
-	unsigned int a, b, counter, temp, place;
+	unsigned int num = n;
 
-	a = n;
-	place = b = 1;
-	temp = a;
+	if (n < 0)
+	{
+		_putchar('-');
+		num = -num;
+	}
+	if ((num / 10) > 0)
+		print_number(num / 10);
 
-	while (temp > 9)
-	{
-		b++;
-		temp = temp / 10;
-	}
-	for (counter = 1; counter < b; counter++)
-		place = place * 10;
-	while (place > 1)
-	{
-		_putchar((a / place) % 10 + '0');
-		place = place / 10;
-	}
-		_putchar(a % 10 + '0');
+	_putchar((num % 10) + '0');
 }
 
 /**
@@ -75,25 +66,22 @@ void print_number(int n)
 
 int main(int argc, char *argv[])
 {
-	int c, a, mul;
+	int a, mul;
 
-	c = 0;
 	a = 1;
-	mul = 0;
 
 	if (argc != 3)
 	{
 		_printerror("Error");
 		exit(98);
 	}
-	while (c < argc)
+	while (a < argc)
 	{
 		if (is_num(argv[a]))
 		{
 			mul = atoi(argv[1]) * atoi(argv[2]);
 			print_number(mul);
 			_putchar('\n');
-			return (0);
 		}
 		else
 		{
@@ -104,4 +92,3 @@ int main(int argc, char *argv[])
 	}
 	return (0);
 }
-
