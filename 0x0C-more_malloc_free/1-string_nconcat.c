@@ -19,15 +19,6 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	a = 0;
 	b = 0;
 
-	if (n <= strlen(s2))
-	{
-		lenghts = (strlen(s1) +  strlen(s2) - n + 2);
-	}
-	else
-	{
-		(lenghts = strlen(s1) + strlen(s2) + 2);
-	}
-
 	if (s1 == NULL)
 	{
 		s1 = "";
@@ -36,9 +27,19 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	{
 		s2 = "";
 	}
+	if (n <= strlen(s2))
+	{
+		lenghts = (strlen(s1) +  strlen(s2) - n + 2);
+	}
+	else
+	{
+		(lenghts = strlen(s1) + strlen(s2) + 2);
+	}
 	s = malloc(lenghts + 1);
 	if (s == NULL)
+	{
 		return (NULL);
+	}
 	while (a < strlen(s1))
 	{
 		s[a] = s1[a];
