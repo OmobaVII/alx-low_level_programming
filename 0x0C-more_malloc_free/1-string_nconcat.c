@@ -19,13 +19,13 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	a = 0;
 	b = 0;
 
-	if (n < strlen(s2))
+	if (n <= strlen(s2))
 	{
-		lenghts = (strlen(s1) + strlen(s2) - n + 1);
+		lenghts = (strlen(s1) + strlen(s2) - n + 2);
 	}
 	else
 	{
-		(lenghts = strlen(s1) + strlen(s2) + 1);
+		(lenghts = strlen(s1) + strlen(s2) + 2);
 	}
 
 	if (s1 == NULL)
@@ -44,7 +44,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		s[a] = s1[a];
 		a++;
 	}
-	for (i = a; i < (lenghts + 1); i++)
+	for (i = a; i < (lenghts); i++)
 	{
 		s[i] = s2[b];
 		b++;
