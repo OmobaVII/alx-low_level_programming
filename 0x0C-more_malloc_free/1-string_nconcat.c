@@ -41,24 +41,24 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	if (num >= l2)
 	{
 		num = l2;
-		s = malloc(sizeof(char) * (strlen(s1) +  strlen(s2) + 1));
+		s = malloc(sizeof(char) * (l1 +  l2 + 1));
 	}
 	else
 	{
-		s = malloc(sizeof(char) * (strlen(s1) + n + 1));
+		s = malloc(sizeof(char) * (l1 + n + 1));
 	}
 	if (s == NULL)
 	{
 		return (NULL);
 	}
-	for (a = 0; a < strlen(s1); a++)
+	for (a = 0; a < l1; a++)
 	{
 		s[a] = s1[a];
 	}
-	for (i = 0; i < n; i++)
+	for (i = 0; i < num; i++)
 	{
-		s[a] = s2[i];
+		s[a++] = s2[i];
 	}
-	s[i++] = '\0';
+	s[a++] = '\0';
 	return (s);
 }
