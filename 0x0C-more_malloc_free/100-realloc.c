@@ -14,26 +14,26 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
 	void *reallocated;
 
-	if (new_size == 0)
-	{
-		free(ptr);
-		return (NULL);
-	}
 	if (new_size > old_size)
 	{
 		reallocated = malloc(new_size);
 		free(ptr);
 		return (reallocated);
 	}
+	if (new_size == old_size)
+	{
+		return (ptr);
+	}
 	if (ptr == NULL)
 	{
 		reallocated = malloc(new_size);
 		free(ptr);
-		return (NULL);
+		return (reallocated);
 	}
-	if (new_size == old_size)
+	if (new_size == 0 && prt != NULL)
 	{
-		return (ptr);
+		free(ptr);
+		return (NULL);
 	}
 	return (ptr);
 }
