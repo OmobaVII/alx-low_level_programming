@@ -17,6 +17,8 @@ dog_t *new_dog(char *name, float age, char *owner)
 	name_lenght = 0;
 	owner_lenght = 0;
 
+	if (name != NULL && owner != NULL)
+	{
 	while (name[name_lenght++])
 		;
 	while (owner[owner_lenght++])
@@ -45,6 +47,11 @@ dog_t *new_dog(char *name, float age, char *owner)
 		return (NULL);
 	}
 	for (a = 0; a < owner_lenght; a++)
+	{
 		new_dog->owner[a] = owner[a];
+	}
+
+	}
+
 	return (new_dog);
 }
