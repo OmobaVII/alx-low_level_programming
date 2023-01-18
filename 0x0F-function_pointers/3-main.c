@@ -19,7 +19,14 @@ int main(int argc, char *argv[])
 		printf("Error\n");
 		exit(98);
 	}
+	if (atoi(argv[2]) == '\0')
+	{
+		printf("Error\n");
+		exit(99);
+	}
+
 	a = get_op_func(argv[2]);
+
 	if (a == NULL)
 	{
 		printf("Error\n");
@@ -28,7 +35,7 @@ int main(int argc, char *argv[])
 
 	i = atoi(argv[1]);
 	j = atoi(argv[3]);
-	
+
 	printf("%d\n", a(i, j));
 
 	return (0);
