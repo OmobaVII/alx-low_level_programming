@@ -20,12 +20,8 @@ int int_index(int *array, int size, int (*cmp)(int))
 			{
 				return (a);
 			}
-			if (a == size)
-			{
-				return (-1);
-			}
+			return (-1);
 		}
-		return (a);
 	}
 	if (size <= 0)
 	{
