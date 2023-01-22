@@ -34,6 +34,7 @@ int main(int argc, char *argv[])
 		if (a == (b - 1))
 		{
 			printf("%02hhx\n", opcode[a]);
+			break;
 		}
 		printf("%02hhx ", opcode[a]);
 	}
