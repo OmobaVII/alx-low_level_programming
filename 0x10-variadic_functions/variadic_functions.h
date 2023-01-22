@@ -10,11 +10,15 @@ void printchar(va_list type);
 void printint(va_list type);
 void printfloat(va_list type);
 void printstring(va_list type);
-
+/**
+ * struct check - a structure used to check for the type of data to be printed
+ * @data_type: the type of data passed
+ * @f: a function pointer to the argument
+ */
 typedef struct check
 {
 	char *data_type;
 	void (*f)();
-}check;
+} check;
 
 #endif
