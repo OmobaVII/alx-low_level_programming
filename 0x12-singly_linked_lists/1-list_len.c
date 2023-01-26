@@ -4,7 +4,8 @@
 #include <string.h>
 
 /**
- * list_len - a function that returns the number of element in a singly linked list
+ * list_len - a function that returns the number of element
+ * in a singly linked list
  * @h: the singly linked list
  * Return: the number of elements in the singly linked list
  */
