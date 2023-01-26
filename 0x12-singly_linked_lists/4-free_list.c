@@ -2,7 +2,7 @@
 
 /**
  * free_list - a function that frees a singly linked list
- * @head - the singly linked list
+ * @head: the singly linked list
  * Return: void
  */
 
