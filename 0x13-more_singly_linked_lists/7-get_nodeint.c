@@ -1,7 +1,8 @@
 #include "lists.h"
 
 /**
- * get_nodeint_at_index - a function that returns a particular node of a singly linked list
+ * get_nodeint_at_index - a function that returns a particular
+ * node of a singly linked list
  * @head: the singly linked list
  * @index: is the number of node to return
  * Return: the indexed node
