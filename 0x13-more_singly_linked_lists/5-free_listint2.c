@@ -3,6 +3,7 @@
 /**
  * free_listint2 - a function that frees a singly linked list
  * and sets the head to NULL
+ * @head: the single linked list
  * Return: void
  */
 
