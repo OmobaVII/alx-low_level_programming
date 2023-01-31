@@ -27,6 +27,8 @@ int print_list(const listint_t *head, int *visited)
 	const listint_t *current = head;
 	int nodes = 0;
 
+	if (head == NULL)
+		exit(98);
 	while (current != NULL)
 	{
 		if (mark_node((listint_t *)current, visited) == 1)
@@ -49,10 +51,6 @@ size_t print_listint_safe(const listint_t *head)
 {
 	int visited[10001] = {0};
 
-	if (head == NULL)
-	{
-		exit(98);
-	}
 	return (print_list(head, visited));
 }
 
