@@ -48,8 +48,11 @@ int print_list(const listint_t *head, int *visited)
 size_t print_listint_safe(const listint_t *head)
 {
 	int visited[10001] = {0};
+
 	if (head == NULL)
+	{
 		exit(98);
+	}
 	return (print_list(head, visited));
 }
 
