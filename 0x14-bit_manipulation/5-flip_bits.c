@@ -16,8 +16,6 @@ unsigned int flip_bits(unsigned long int n, unsigned long int m)
 	count = 0;
 	xor = (n ^ m);
 
-	if (n > ULONG_MAX || m > ULONG_MAX)
-		return (-1);
 	if (xor == 0)
 	{
 		return (0);
