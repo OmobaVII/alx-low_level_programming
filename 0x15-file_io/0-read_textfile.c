@@ -19,10 +19,14 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	real = letters - read_characters;
 
 	if (filename == NULL)
+	{
 		return (0);
+	}
 	fp = fopen(filename, "r");
 	if (fp == NULL)
+	{
 		return (0);
+	}
 	while (fgets(buffer, 1024, fp) != NULL && read_characters < letters)
 	{
 		line_len = strlen(buffer);
