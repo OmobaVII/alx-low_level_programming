@@ -56,6 +56,7 @@ int main(int argc, char *argv[])
 	int file_des;
 	struct stat st;
 	unsigned char buf[ELF_IDENT_SIZE];
+	Elf64_Ehdr ehdr;
 
 	if (argc != 2)
 	{
@@ -91,22 +92,18 @@ int main(int argc, char *argv[])
 		return 100;
 	}
 
-	fd = open(argv[1], O_RDONLY);
+	file_des = open(argv[1], O_RDONLY);
 	if (file_des == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", argv[1]);
 		return 98;
 	}
-
-	Elf64_Ehdr ehdr;
 	if (read(file_des, &ehdr, sizeof(Elf64_Ehdr)) != sizeof(Elf64_Ehdr))
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read ELF header from file %s\n", argv[1]);
 		return 98;
 	}
-
 	display_elf_header(&ehdr);
-
 	if (close(file_des) == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't close file descriptor %d\n", file_des);
