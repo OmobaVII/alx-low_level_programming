@@ -13,35 +13,38 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	FILE *fp;
 	char buffer[1024];
 	unsigned long int read_characters;
-	unsigned long int line_len;
+	int line_len, real;
 
 	read_characters = 0;
+	real = letters - read_characters;
 
 	if (filename == NULL)
-	{
 		return (0);
-	}
 
 	fp = fopen(filename, "r");
 	if (fp == NULL)
-	{
 		return (0);
-	}
 	if (letters == 0)
-	{
 		return (0);
-	}
 	while (fgets(buffer, 1024, fp) != NULL && read_characters < letters)
 	{
 		line_len = strlen(buffer);
-		if (line_len <= letters - read_characters)
+		if (line_len <= real)
 		{
-			printf("%s", buffer);
+			if (printf("%s", buffer) < line_len)
+			{
+				fclose(fp);
+				return (0);
+			}
 			read_characters = read_characters + line_len;
 		}
 		else
 		{
-			printf("%ld%s\n", (letters - read_characters), buffer);
+			if (printf("%.*s\n", (real), buffer) < (real))
+			{
+				fclose(fp);
+				return (0);
+			}
 			read_characters = letters;
 		}
 	}
