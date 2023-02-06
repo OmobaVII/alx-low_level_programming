@@ -1,7 +1,8 @@
 #include "main.h"
 
 /**
- * read_textfile - A function that reads a text file and prints it to the standard output
+ * read_textfile - A function that reads a text file and
+ * prints it to the standard output
  * @filename: the name of the file you want to print
  * @letters: the number of letters it should print
  * Return: the total numbers of letters printed
@@ -18,7 +19,15 @@ ssize_t read_textfile(const char *filename, size_t letters)
 
 	fp = fopen(filename, "r");
 
+	if (filename == NULL)
+	{
+		return (0);
+	}
 	if (fp == NULL)
+	{
+		return (0);
+	}
+	if (fgets(buffer, letters, fp) == NULL)
 	{
 		return (0);
 	}
