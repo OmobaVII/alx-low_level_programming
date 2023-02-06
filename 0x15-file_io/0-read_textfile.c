@@ -32,7 +32,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		return (0);
 	}
 
-	while (fgets(buffer, letters, fp) != NULL && read_characters <= letters)
+	while (fgets(buffer, 1024, fp) != NULL && read_characters <= letters)
 	{
 		line_len = strlen(buffer);
 		if (line_len <= letters - read_characters)
@@ -45,5 +45,6 @@ ssize_t read_textfile(const char *filename, size_t letters)
 			printf("%ld%s\n", letters - read_characters, buffer);
 		}
 	}
+	fclose(fp);
 	return (read_characters);
 }
