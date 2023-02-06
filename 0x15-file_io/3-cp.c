@@ -19,13 +19,7 @@ int main(int argc, char *argv[])
 		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
-
 	filedes_from = open(argv[1], O_RDONLY);
-	if (filedes_from == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-		exit(98);
-	}
 	filedes_to = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
 	if (filedes_to == -1)
 	{
@@ -41,7 +35,7 @@ int main(int argc, char *argv[])
 			exit(99);
 		}
 	}
-	if (reading == -1)
+	if ((reading == -1) || (filedes_from == -1))
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 		exit(98);
@@ -58,5 +52,3 @@ int main(int argc, char *argv[])
 	}
 	return (0);
 }
-
-
