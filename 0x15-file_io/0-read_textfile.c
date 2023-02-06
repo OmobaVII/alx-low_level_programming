@@ -12,7 +12,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 {
 	FILE *fp;
 	char buffer[1024];
-	unsigned long int read_characters = 0;
+	unsigned long int read_characters;
 	unsigned long int line_len;
 
 	read_characters = 0;
@@ -27,7 +27,10 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	{
 		return (0);
 	}
-
+	if (letters == 0)
+	{
+		return (0);
+	}
 	while (fgets(buffer, 1024, fp) != NULL && read_characters < letters)
 	{
 		line_len = strlen(buffer);
@@ -42,6 +45,10 @@ ssize_t read_textfile(const char *filename, size_t letters)
 			read_characters = letters;
 		}
 	}
-	fclose(fp);
+	if (fclose(fp) != 0)
+	{
+		return (0);
+	}
+
 	return (read_characters);
 }
