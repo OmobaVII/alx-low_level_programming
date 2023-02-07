@@ -35,7 +35,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		}
 		else
 		{
-			if (printf("%.*s\n", (int)(real), buffer) < (real - 1))
+			if (printf("%.*s\n", (int)(real), buffer) < (real + buffer))
 			{
 				fclose(fp);
 				return (0);
