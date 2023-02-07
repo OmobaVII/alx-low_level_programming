@@ -25,21 +25,26 @@ int check_elf(unsigned char *buf)
 void display_elf_header(Elf64_Ehdr *ehdr)
 {
 	int i;
-
+void display_elf_header(Elf64_Ehdr *ehdr)
+{
 	printf("ELF Header:\n");
-	printf("Magic: ");
-	for (i = 0; i < ELF_IDENT_SIZE; i++)
+	printf("  Magic:   ");
+	for (int i = 0; i < ELF_IDENT_SIZE; i++)
 	{
 		printf("%02x ", ehdr->e_ident[i]);
 	}
 	printf("\n");
-	printf(" Class:	ELF%d\n", ehdr->e_ident[4]);
-	printf(" Data:	2's complement, little endian\n");
-	printf(" Version:	 %d (current)\n", ehdr->e_ident[6]);
-	printf(" OS/ABI:	UNIX - System V\n");
-	printf(" ABI Version:	 %d\n", ehdr->e_ident[8]);
-	printf(" Type:	%s\n", ehdr->e_type);
-	printf(" Entry point address: 0x%0lx\n", ehdr->e_entry);
+	printf("  Class:                             ELF%d\n", ehdr->e_ident[4]);
+	printf("  Data:                              2's complement, %s endian\n", (ehdr->e_ident[5] == ELFDATA2LSB) ? "little" : "big");
+	printf("  Version:                           %d\n", ehdr->e_ident[6]);
+	printf("  OS/ABI:                            UNIX - System V\n");
+	printf("  ABI Version:                       %d\n", ehdr->e_ident[8]);
+	printf("  Type:                              %s\n", (ehdr->e_type == ET_EXEC) ? "EXEC (Executable file)" :
+			(ehdr->e_type == ET_DYN) ? "DYN (Shared object file)" :
+			(ehdr->e_type == ET_REL) ? "REL (Relocatable file)" : "NONE");
+	printf("  Machine:                           %s\n", (ehdr->e_machine == EM_X86_64) ? "Advanced Micro Devices X86-64" : "UNKNOWN");
+	printf("  Version:                           0x%x\n", ehdr->e_version);
+	printf("  Entry point address:               0x%0lx\n", ehdr->e_entry);
 }
 
 /**
