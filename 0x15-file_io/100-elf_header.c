@@ -41,7 +41,7 @@ void display_elf_header(Elf64_Ehdr *ehdr)
 	printf("  Type:                              %s\n", (ehdr->e_type == ET_EXEC) ? "EXEC (Executable file)" :
 			(ehdr->e_type == ET_DYN) ? "DYN (Shared object file)" :
 			(ehdr->e_type == ET_REL) ? "REL (Relocatable file)" : "NONE");
-	printf("  Entry point address:               0x%0lx\n", ehdr->e_entry);
+	printf("  Entry point address:               0x%lx\n", ehdr->e_entry & 0xfffff);
 }
 
 /**
@@ -63,20 +63,17 @@ int main(int argc, char *argv[])
 		    dprintf(STDERR_FILENO, "Error: Invalid number of arguments\nUsage: %s elf_file\n", argv[0]);
 		        return 98;
 	}
-
 	file_des = open(argv[1], O_RDONLY);
 	if (file_des == -1)
 	{
 		    dprintf(STDERR_FILENO, "Error: Can't open file %s\n", argv[1]);
 		        return 98;
 	}
-
 	if (fstat(file_des, &st) == -1 || !S_ISREG(st.st_mode))
 	{
 		    dprintf(STDERR_FILENO, "Error: %s is not a regular file\n", argv[1]);
 		        return 98;
 	}
-
 	if (read(file_des, buf, ELF_IDENT_SIZE) != ELF_IDENT_SIZE)
 	{
 		    dprintf(STDERR_FILENO, "Error: Can't read ELF header from file %s\n", argv[1]);
@@ -91,7 +88,6 @@ int main(int argc, char *argv[])
 		dprintf(STDERR_FILENO, "Error: Can't close file descriptor %d\n", file_des);
 		return 100;
 	}
-
 	file_des = open(argv[1], O_RDONLY);
 	if (file_des == -1)
 	{
