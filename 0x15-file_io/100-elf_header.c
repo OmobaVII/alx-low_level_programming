@@ -25,11 +25,10 @@ int check_elf(unsigned char *buf)
 void display_elf_header(Elf64_Ehdr *ehdr)
 {
 	int i;
-void display_elf_header(Elf64_Ehdr *ehdr)
-{
+
 	printf("ELF Header:\n");
 	printf("  Magic:   ");
-	for (int i = 0; i < ELF_IDENT_SIZE; i++)
+	for (i = 0; i < ELF_IDENT_SIZE; i++)
 	{
 		printf("%02x ", ehdr->e_ident[i]);
 	}
