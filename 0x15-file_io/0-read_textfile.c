@@ -23,7 +23,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		return (0);
 	while (fgets(buffer, 1024, fp) != NULL && (read_characters < letters))
 	{
-		line_len = 1 + strlen(buffer);
+		line_len = strlen(buffer);
 		if (line_len <= real)
 		{
 			if (printf("%s", buffer) < line_len)
@@ -35,7 +35,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		}
 		else
 		{
-			if (printf("%.*s\n", (int)(real), buffer) < (real))
+			if (printf("%.*s\n", (int)(real), buffer) < (real - 1))
 			{
 				fclose(fp);
 				return (0);
