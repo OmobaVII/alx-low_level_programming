@@ -21,10 +21,10 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	fp = fopen(filename, "r");
 	if (fp == NULL)
 		return (0);
-	while ((fgets(buffer, 1024, fp) != NULL) && (read_characters <= letters))
+	while (fgets(buffer, 1024, fp) != NULL && (read_characters < letters))
 	{
 		line_len = strlen(buffer);
-		if (line_len <= real)
+		if (line_len < real)
 		{
 			if (printf("%s", buffer) < line_len)
 			{
