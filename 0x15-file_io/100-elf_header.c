@@ -27,20 +27,18 @@ void display_elf_header(Elf64_Ehdr *ehdr)
 	int i;
 
 	printf("ELF Header:\n");
-	printf("Magic:");
+	printf("Magic: ");
 	for (i = 0; i < ELF_IDENT_SIZE; i++)
 	{
-		printf("%02x", ehdr->e_ident[i]);
+		printf("%02x ", ehdr->e_ident[i]);
 	}
 	printf("\n");
-	printf(" Class:ELF%d\n", ehdr->e_ident[4]);
-	printf(" Data: 2's complement, little endian\n");
-	printf(" Version: %d\n", ehdr->e_ident[6]);
-	printf(" OS/ABI: UNIX - System V\n");
-	printf(" ABI Version: %d\n", ehdr->e_ident[8]);
-	printf(" Type: %hu\n", ehdr->e_type);
-	printf(" Machine: %hu\n", ehdr->e_machine);
-	printf(" Version: %d\n", ehdr->e_version);
+	printf(" Class:	ELF%d\n", ehdr->e_ident[4]);
+	printf(" Data:	2's complement, little endian\n");
+	printf(" Version:	 %d (current)\n", ehdr->e_ident[6]);
+	printf(" OS/ABI:	UNIX - System V\n");
+	printf(" ABI Version:	 %d\n", ehdr->e_ident[8]);
+	printf(" Type:	%s\n", ehdr->e_type);
 	printf(" Entry point address: 0x%0lx\n", ehdr->e_entry);
 }
 
