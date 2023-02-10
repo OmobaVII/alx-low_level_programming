@@ -60,6 +60,11 @@ int main(int argc, char *argv[])
 		dprintf(STDERR_FILENO, "Error: Invalid number of arguments\nUsage: %s elf_file\n", argv[0]);
 		exit(98);
 	}
+	if (!check_elf(buf))
+	{
+		dprintf(STDERR_FILENO, "%s: is not an ELF file\n");
+		exit(98);
+	}
 	display_elf_header(&ehdr);
 	return (0);
 }
