@@ -53,35 +53,19 @@ void display_elf_header(Elf32_Ehdr *ehdr)
 
 int main(int argc, char *argv[])
 {
-	int file_des;
-	unsigned char buf[ELF_IDENT_SIZE];
 	Elf32_Ehdr ehdr;
+	unsigned char buf[ELF_IDENT_SIZE];
 
 	if (argc != 2)
 	{
-		    dprintf(STDERR_FILENO, "Error: Invalid number of arguments\nUsage: %s elf_file\n", argv[0]);
-		        return (98);
+		dprintf(STDERR_FILENO, "Error: Invalid number of arguments\nUsage: %s elf_file\n", argv[0]);
+		exit(98);
 	}
 	if (!check_elf(buf))
 	{
-		    dprintf(STDERR_FILENO, "Error: %s is not an ELF file\n", argv[1]);
-	}
-	file_des = open(argv[1], O_RDONLY);
-	if (file_des == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", argv[1]);
-		return 98;
-	}
-	if (read(file_des, &ehdr, sizeof(Elf64_Ehdr)) != sizeof(Elf64_Ehdr))
-	{
-		dprintf(STDERR_FILENO, "Error: Can't read ELF header from file %s\n", argv[1]);
-		return 98;
+		dprintf(STDERR_FILENO, "Error: %s is not an ELF file\n", argv[1]);
+		exit(98);
 	}
 	display_elf_header(&ehdr);
-	if (close(file_des) == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close file descriptor %d\n", file_des);
-		return 100;
-	}
 	return (0);
 }
