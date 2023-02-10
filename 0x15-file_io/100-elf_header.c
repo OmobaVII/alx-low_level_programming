@@ -63,7 +63,7 @@ int main(int argc, char *argv[])
 	}
 	if (!check_elf(buf))
 	{
-		dprintf(STDERR_FILENO, "%s: is not an ELF file\n");
+		dprintf(STDERR_FILENO, "%s: is not an ELF file\n", argv[1]);
 		exit(98);
 	}
 	display_elf_header(&ehdr);
