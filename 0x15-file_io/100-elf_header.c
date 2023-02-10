@@ -54,16 +54,10 @@ void display_elf_header(Elf32_Ehdr *ehdr)
 int main(int argc, char *argv[])
 {
 	Elf32_Ehdr ehdr;
-	unsigned char buf[ELF_IDENT_SIZE];
 
 	if (argc != 2)
 	{
 		dprintf(STDERR_FILENO, "Error: Invalid number of arguments\nUsage: %s elf_file\n", argv[0]);
-		exit(98);
-	}
-	if (!check_elf(buf))
-	{
-		dprintf(STDERR_FILENO, "Error: %s is not an ELF file\n", argv[1]);
 		exit(98);
 	}
 	display_elf_header(&ehdr);
