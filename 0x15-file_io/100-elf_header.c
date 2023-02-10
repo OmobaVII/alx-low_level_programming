@@ -54,6 +54,7 @@ void display_elf_header(Elf32_Ehdr *ehdr)
 int main(int argc, char *argv[])
 {
 	Elf32_Ehdr ehdr;
+	unsigned char buf[ELF_IDENT_SIZE];
 
 	if (argc != 2)
 	{
