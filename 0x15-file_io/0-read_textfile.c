@@ -10,42 +10,38 @@
 
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	FILE *fp;
-	char buffer[1024];
-	unsigned long int read_characters = 0;
-	int line_len, real;
+	int file_des;
+	ssize_t read_c, wrote_c;
+	char *buf;
 
-	real = letters - read_characters;
 	if (filename == NULL)
-		return (0);
-	fp = fopen(filename, "r");
-	if (fp == NULL)
-		return (0);
-	while (fgets(buffer, 1024, fp) != NULL && (read_characters < letters))
-	{
-		line_len = strlen(buffer);
-		if (line_len <= real)
-		{
-			if (printf("%s", buffer) < line_len)
-			{
-				fclose(fp);
-				return (0);
-			}
-			read_characters = read_characters + line_len;
-		}
-		else
-		{
-			if (printf("%.*s\n", (int)(real), buffer) < (real))
-			{
-				fclose(fp);
-				return (0);
-			}
-			read_characters = letters;
-		}
-	}
-	if (fclose(fp) != 0)
 	{
 		return (0);
 	}
-	return (read_characters);
+	file_des = open(filename, O_RDONLY);
+	if (file_des == -1)
+	{
+		return (0);
+	}
+	buf = malloc(sizeof(char) * letters);
+	if (buf ==  NULL)
+	{
+		return (0);
+	}
+	read_c = read(file_des, buf, letters);
+	if (read_c == -1)
+	{
+		free(buf);
+		close(file_des);
+		return (0);
+	}
+	wrote_c = write(STDOUT_FILENO, buf, read_c);
+	if (wrote_c == -1)
+	{
+		free(buf);
+		close(file_des);
+		return (0);
+	}
+	close(file_des);
+	return (read_c);
 }
