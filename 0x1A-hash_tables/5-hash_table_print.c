@@ -21,7 +21,8 @@ void hash_table_print(const hash_table_t *ht)
 		if (node != NULL)
 		{
 			while (node != NULL)
-			{	if (!first)
+			{
+				if (!first)
 				{
 					printf(", ");
 				}
