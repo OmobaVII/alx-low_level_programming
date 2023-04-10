@@ -29,6 +29,42 @@ shash_table_t *shash_table_create(unsigned long int size)
 	return (new_table);
 }
 /**
+ * shash_node_insert - a function that inserts a new sorted node
+ * @ht: the sorted hash table
+ * @new: the node to add
+ * Return: void
+ */
+void shash_node_insert(shash_table_t *ht, shash_node_t *new)
+{
+	shash_node_t *current;
+
+	if (ht->shead == NULL && ht->stail == NULL)
+	{
+		ht->shead = new;
+		ht->stail = new;
+		return;
+	}
+	current = ht->shead;
+	while (current != NULL)
+	{
+		if (strcmp(new->key, current->key) < 0)
+		{
+			new->snext = current;
+			new->sprev = current->sprev;
+			current->sprev = new;
+			if (new->sprev != NULL)
+				new->sprev->snext = new;
+			else
+				ht->shead = new;
+			return;
+		}
+		current = current->snext;
+	}
+	new->sprev = ht->stail;
+	ht->stail->snext = new;
+	ht->stail = new;
+}
+/**
  * shash_table_set - a function that sets a sorted hash table
  * @ht: the hash table
  * @key: the key to set
@@ -74,8 +110,9 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 		free(new_node);
 		return (0);
 	}
-	new_node = ht->array[idx];
+	new_node->next = ht->array[idx];
 	ht->array[idx] = new_node;
+	shash_node_insert(ht, new_node);
 	return (1);
 }
 /**
@@ -93,7 +130,7 @@ char *shash_table_get(const shash_table_t *ht, const char *key)
 	{
 		return (NULL);
 	}
-	idx = key_index((const unsigned char*)key, ht->size);
+	idx = key_index((const unsigned char *)key, ht->size);
 	node = ht->array[idx];
 
 	while (node != NULL)
@@ -142,7 +179,7 @@ void shash_table_print(const shash_table_t *ht)
 void shash_table_print_rev(const shash_table_t *ht)
 {
 	shash_node_t *node;
-	int first;
+	int first = 1;
 
 	if (ht == NULL)
 		return;
