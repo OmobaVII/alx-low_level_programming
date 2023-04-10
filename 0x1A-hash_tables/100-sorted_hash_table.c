@@ -75,7 +75,6 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 {
 	shash_node_t *new_node, *current_node;
 	unsigned long int idx;
-	char *new_value;
 
 	if (ht == NULL || key == NULL || value == NULL || strlen(key) == 0)
 		return (0);
@@ -85,11 +84,10 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 	{
 		if (strcmp(current_node->key, key) == 0)
 		{
-			new_value = strdup(value);
-			if (new_value == NULL)
+			if (strdup(value) == NULL)
 				return (0);
 			free(current_node->value);
-			current_node->value = new_value;
+			current_node->value = strdup(value);
 			return (1);
 		}
 		current_node = current_node->snext;
