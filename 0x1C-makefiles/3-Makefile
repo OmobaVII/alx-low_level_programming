@@ -1,0 +1,21 @@
+#My first make file with multiple rules
+#How to use rules make (all/clean/oclean/fclean/re) 3-Makefile
+
+CC = gcc
+SRC = main.c school.c
+OBJ = $(SRC:.c=.o)
+NAME = school
+RM = rm -f
+
+all: $(OBJ)
+	$(CC) $(OBJ) -o $(NAME)
+
+clean:
+	$(RM) $(NAME) *~
+
+oclean:
+	$(RM) $(OBJ)
+
+fclean: clean oclean
+
+re: fclean all
