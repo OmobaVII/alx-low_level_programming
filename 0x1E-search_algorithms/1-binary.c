@@ -34,14 +34,13 @@ int binary_search(int *array, size_t size, int value)
 {
 	unsigned int mid, low, high;
 
-	low = 0;
-	high = size - 1;
-	mid = 0;
-
-	if (!array)
+	if (array == NULL || size == 0)
 	{
 		return (-1);
 	}
+	low = 0;
+	high = size - 1;
+	mid = 0;
 
 	while (low <= high)
 	{
