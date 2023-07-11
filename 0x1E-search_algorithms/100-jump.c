@@ -1,15 +1,5 @@
 #include "search_algos.h"
 
-/**
- * print_index - function to print index for each check
- * @array: array
- * @idx: index checked
- */
-
-void print_index(int *array, size_t idx)
-{
-	printf("Value checked arrray[%ld] = [%d]\n", idx, array[idx]);
-}
 
 /**
  * print_diff - function to print at each check
@@ -30,43 +20,33 @@ void print_diff(size_t a, size_t b)
  */
 int jump_search(int *array, size_t size, int value)
 {
-	size_t jumper = sqrt(size);
-	size_t a = 0, b = 0;
-
+	size_t idx, a, jumper, pre;
 	if (array == NULL || size == 0)
 		return (-1);
 
-	while (b < size)
+	jumper = sqrt(size);
+	a = 0;
+	pre = 0;
+	idx = 0;
+
+	do {
+		printf("Value checked array[%ld] = [%d]\n", idx, array[idx]);
+
+		if (array[idx] == value)
+			return (idx);
+		a++;
+		pre = idx;
+		idx = a * jumper;
+	} while (idx < size && array[idx] < value);
+
+	print_diff(pre, idx);
+
+	for (; pre <= idx && pre < size; pre++)
 	{
-		if (b != 0)
-			print_index(array, a);
-		if (array[b] >= value)
-		{
-			print_diff(a, b);
-			while (a <= b)
-			{
-				print_index(array, a);
-				if (array[a] == value)
-					return (a);
-				a++;
-			}
-			return (-1);
-		}
-		if ((b + (2 * jumper)) > size)
-		{
-			print_index(array, b);
-			print_diff(b, b + jumper);
-			while (b < size)
-			{
-				print_index(array, b);
-				if (array[b] == value)
-					return (b);
-				b++;
-			}
-			return (-1);
-		}
-		a = b;
-		b += jumper;
+		printf("Value checked array[%ld] = [%d]\n", pre, array[pre]);
+		if (array[pre] == value)
+			return (pre);
 	}
 	return (-1);
 }
+
