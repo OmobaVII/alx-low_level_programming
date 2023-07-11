@@ -42,7 +42,7 @@ int binary_search(int *array, size_t size, int value)
 		return (-1);
 	}
 
-	for (low <= high;)
+	for (; low <= high ;)
 	{
 		print_bin(array, low, high);
 		mid = (low + high) / 2;
