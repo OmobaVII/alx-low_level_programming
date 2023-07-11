@@ -21,6 +21,7 @@ void print_diff(size_t a, size_t b)
 int jump_search(int *array, size_t size, int value)
 {
 	size_t idx, a, jumper, pre;
+
 	if (array == NULL || size == 0)
 		return (-1);
 
@@ -28,8 +29,8 @@ int jump_search(int *array, size_t size, int value)
 	a = 0;
 	pre = 0;
 	idx = 0;
-
-	do {
+	while (idx < size && array[idx] < value)
+	{
 		printf("Value checked array[%ld] = [%d]\n", idx, array[idx]);
 
 		if (array[idx] == value)
@@ -37,7 +38,7 @@ int jump_search(int *array, size_t size, int value)
 		a++;
 		pre = idx;
 		idx = a * jumper;
-	} while (idx < size && array[idx] < value);
+	}
 
 	print_diff(pre, idx);
 
