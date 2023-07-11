@@ -36,7 +36,7 @@ int jump_search(int *array, size_t size, int value)
 	if (array == NULL || size == 0)
 		return (-1);
 
-	while (b <= size)
+	while (b < size)
 	{
 		if (b != 0)
 			print_index(array, a);
